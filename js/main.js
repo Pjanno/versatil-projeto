@@ -35,6 +35,7 @@ function processFile(files){
 }
 
 function geraRelatorio(){
+  $('#relatorio-btn').prop('disabled', true)
   clientes.forEach(cliente =>{
     dados.forEach(dado =>{
       if (cliente == dado[1]){
@@ -63,4 +64,13 @@ function geraRelatorio(){
     duracaoMediaArea.media = Math.round(duracao / qnt)
     duracaoMedia.push(duracaoMediaArea)
   })  
+
+  document.getElementById('total-cli-ligaram').innerText += ` ${clientes.length}`
+  document.getElementById('total-outro-ddd').innerText += ` ${ligacoesOutroDDD}`
+  duracaoMedia.forEach(knot => {
+    var p = document.createElement('li')
+    p.innerText = `DDD: ${knot.area} - Tempo Médio: ${knot.media}`
+    document.getElementById('lista-ddd').appendChild(p)
+  })
+  
 }
