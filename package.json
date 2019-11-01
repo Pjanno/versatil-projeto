@@ -1,0 +1,15 @@
+{
+  "name": "versatil-teste",
+  "version": "1.0.0",
+  "description": "Programa de teste para: Versátil",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.4.1",
+    "materialize-css": "^1.0.0-rc.2"
+  }
+}

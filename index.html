@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Versátil: Teste de Programação</title>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.css" media="screen,projection"/>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+  <body>
+    <div>
+      <h1>Faça aqui o upload do arquivo para o processamento</h1>
+      <h3>Lembrando que o formato dos dados deve seguir a ordem:</h3>
+      <h3>[Data-Hora]; [Telefone-Origem]; [Telefone-Destino]; [Duração]</h3>
+    </div>
+    <div>
+      <form method="POST" id="upload-box" enctype="text/plain">
+        <input type="file" id="upload-input"/>
+        <input type="button" id="relatorio-btn" value="Gerar Relatório"/>
+      </form>
+    </div>
+  </body>
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="node_modules/materialize-css/dist/js/materialize.js"></script>
+</html>
+
+<!--
+ENTRADA
+
+DataHora;TelefoneOrigem;TelefoneDestino;Duracao
+2018-01-01 00:01:10;31999990000;31977776666;5
+2018-01-01 00:37:05;21988881111;21965655656;10
+2018-01-01 01:19:03;17901710171;11944440003;20
+2018-01-01 01:26:35;31999990000;2122221111;15
+2018-01-01 23:59:50;3132323333;5144442121;10
+
+SAÍDA
+
+TOTAL_CLIENTES_LIGARAM: 4
+DURACAO_MEDIA:
+  21: 10
+  31: 13
+  91: 20
+TOTAL_CLIENTES_LIGARAM_OUTRO_DDD: 3
+-->
