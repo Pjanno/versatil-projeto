@@ -5,6 +5,7 @@ var ligacoesOutroDDD = 0
 
 $( document ).ready(()=>{
   $('#relatorio-btn').prop('disabled', true)
+  $('#relatorio-btn').addClass('btn disabled')
 })
 
 $('#relatorio-btn').click(geraRelatorio)
@@ -30,12 +31,15 @@ function processFile(files){
     clientes = dados.map(arr => arr[1]) // Retorna array dos números
     clientes = clientes.filter((elem, i) => clientes.indexOf(elem) === i)// Elimina repetidos
     $('#relatorio-btn').prop('disabled', false)
+    $('#relatorio-btn').removeClass('btn disabled')
+    $('#relatorio-btn').addClass('btn orange white-text waves-light waves-effect')
   }
   reader.readAsText(files[0])
 }
 
 function geraRelatorio(){
   $('#relatorio-btn').prop('disabled', true)
+  $('#relatorio-btn').addClass('btn disabled')
   clientes.forEach(cliente =>{
     dados.forEach(dado =>{
       if (cliente == dado[1]){
@@ -68,9 +72,37 @@ function geraRelatorio(){
   document.getElementById('total-cli-ligaram').innerText += ` ${clientes.length}`
   document.getElementById('total-outro-ddd').innerText += ` ${ligacoesOutroDDD}`
   duracaoMedia.forEach(knot => {
-    var p = document.createElement('li')
+    var p = document.createElement('a')
     p.innerText = `DDD: ${knot.area} - Tempo Médio: ${knot.media}`
+    $(p).addClass('collection-item orange white-text')
+    $(p).css('margin', '0')
     document.getElementById('lista-ddd').appendChild(p)
   })
   
+  var texto = `TOTAL_CLIENTES_LIGARAM: ${clientes.length} \n`+
+              `DURACAO_MEDIA: \n`
+  duracaoMedia.forEach(elem =>{
+    texto += `${elem.area}: ${elem.media} \n`
+  })
+  texto += `TOTAL_CLIENTES_LIGARAM_OUTRO_DDD: ${ligacoesOutroDDD}`
+
+  download(texto)
+}
+
+function download(data, filename = 'relatorio') {
+  var file = new Blob([data], {type: data.type});
+  if (window.navigator.msSaveOrOpenBlob)
+  {
+      window.navigator.msSaveOrOpenBlob(file, filename);
+  } else  {
+      var a = document.createElement('a'), url = URL.createObjectURL(file);
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => {
+          document.body.removeChild(a);
+          window.URL.revokeObjectURL(url);  
+      }, 0); 
+  }
 }

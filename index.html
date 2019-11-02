@@ -9,28 +9,86 @@
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
-  <body>
-    <div>
-      <h1>Faça aqui o upload do arquivo para o processamento</h1>
-      <h3>Lembrando que o formato dos dados deve seguir a ordem:</h3>
-      <h3>[Data-Hora]; [Telefone-Origem]; [Telefone-Destino]; [Duração]</h3>
-    </div>
-    <div>
-      <form method="POST" id="upload-box" enctype="text/plain">
-        <input type="file" id="upload-input"/>
-        <input type="button" id="relatorio-btn" value="Gerar Relatório"/>
-      </form>
-    </div>
-    <div>
-      <list>
-        <ul>
-          <li id="total-cli-ligaram">Total de clientes que ligaram:</li>
-          <li id="total-outro-ddd">Total de clientes que ligaram para outro DDD:</li>
-          <li>Tempo médio de ligação por DDD:</li>
-          <ol id="lista-ddd">  
-          </ol>
+  <body class=" grey darken-4" >
+    <!--Div row "principal"-->
+    <div class=" row" style="margin: 0; padding: 0;">
+      <!--"Sidenav"-->
+      <div class=" col s3 grey darken-3 container" style="height:100vh;">
+        <ul class=" center-align">
+          <li><img src="img/author.jpg" alt="autor desse projeto" class="circle" style="width: 200px; height: 200px; margin-bottom: 5%;"></li>
+          <li><div class=" divider"></div></li>
+          <li><p class=" white-text">Faça o upload do arquivo clicando no botão abaixo e clique em gerar relatório para obter os dados</p></li>
+          <li><div class=" divider" style="margin-bottom: 5%;"></div></li>
+          <li><input type="file" id="upload-input" class="btn orange white-text waves-light waves-effect" style="margin-bottom: 5%;"/></li>
+          <li><input type="button" id="relatorio-btn" value="Gerar Relatório" class=" btn-large" style="margin-bottom: 5%;"/></li>
         </ul>
-      </list>
+      </div>
+      <!--"Sidecontent"-->
+      <div class=" col s9" style="height:100vh; padding: 0; justify-items: center; align-items: center;">
+        <!--Navbar-->
+        <div>
+          <nav>
+            <div class="nav-wrapper orange">
+              <ul class="right">
+                <li><a href="https://www.linkedin.com/in/frcchaves/">LinkedIn</a></li>
+                <li><a href="https://github.com/Pjanno">GitHub</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <!--Data-->
+        <div class="center container" style="margin-top: 8vh;">
+          <!--Card1-->
+          <div class="card horizontal">
+            <div class="card-image">
+              <img src="img/cli-call.jpg">
+            </div>
+            <div class="card-stacked">
+              <div class="card-content left-align">
+                <p><h5>Total de clientes que ligaram:</h5></p>
+              </div>
+              <div class="card-action right-align">
+                <h5><p id="total-cli-ligaram"></p></h5>
+              </div>
+            </div>
+          </div>
+          <!--Card2-->
+          <div class="card horizontal">
+            <div class="card-image">
+              <img src="img/cli-int.jpg">
+            </div>
+            <div class="card-stacked">
+              <div class="card-content left-align">
+                <p><h5>Total de cliente que ligaram para outro DDD:</h5></p>
+              </div>
+              <div class="card-action right-align">
+                <h5><p id="total-outro-ddd"></p></h5>
+              </div>
+            </div>
+          </div>
+          <!--Card3-->
+          <div class="card horizontal">
+            <div class="card-image">
+              <img src="img/call-time.jpg">
+            </div>
+            <div class="card-stacked">
+              <div class="card-content left-align">
+                <p><h5>Tempo médio de ligação por DDD:</h5></p>
+              </div>
+              <div class="card-action">
+                <div id="lista-ddd" class=" collection container orange"></div>
+              </div>
+            </div>
+          </div>
+          <!--<ul>
+            <li id="total-cli-ligaram">Total de clientes que ligaram:</li>
+            <li id="total-outro-ddd">Total de clientes que ligaram para outro DDD:</li>
+            <li>Tempo médio de ligação por DDD:</li>
+            <ol id="lista-ddd" class=" collection">  
+            </ol>
+          </ul>-->
+        </div>
+      </div>
     </div>
   </body>
   <script src="node_modules/jquery/dist/jquery.min.js"></script>
